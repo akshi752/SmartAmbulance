@@ -1,26 +1,22 @@
-#include "../include/Ambulance.h"
-#include "../include/Patient.h"
+#ifndef AMBULANCE_H
+#define AMBULANCE_H
 
-Ambulance::Ambulance(string id, string loc) {
-    ambulanceID = id;
-    location = loc;
-    available = true;
-}
+#include <string>
+#include <iostream>
+using namespace std;
 
-void Ambulance::assignToPatient(Patient &p) {
-    if (available) {
-        cout << "Ambulance " << ambulanceID 
-             << " assigned to Patient " << p.patientID << endl;
-        available = false;
-    } else {
-        cout << "Ambulance " << ambulanceID 
-             << " is currently busy." << endl;
-    }
-}
+class Patient; 
 
-void Ambulance::updateLocation(const string &newLoc) {
-    location = newLoc;
-    available = true;
-    cout << "Ambulance " << ambulanceID 
-         << " location updated to " << location << endl;
-}
+class Ambulance {
+public:
+    string ambulanceID;
+    string location;
+    bool available;
+
+    Ambulance(string id, string loc);
+
+    void assignToPatient(Patient &p);
+    void updateLocation(const string &newLoc);
+};
+
+#endif
