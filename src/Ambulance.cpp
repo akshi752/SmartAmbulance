@@ -24,3 +24,9 @@ void Ambulance::updateLocation(const string &newLoc) {
     cout << "Ambulance " << ambulanceID 
          << " location updated to " << location << endl;
 }
+string Ambulance::getambulanceId(){
+    return ambulanceID;
+}
+string Ambulance::getlocation(){
+    return location;
+}

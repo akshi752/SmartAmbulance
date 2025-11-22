@@ -1,0 +1,38 @@
+body {
+    background-color: #f0f8ff;
+}
+
+h2 {
+    color: #0d6efd;
+}
+
+#responseArea {
+    font-weight: bold;
+    color: green;
+}
+#cityMap .node {
+    width: 60px;
+    height: 60px;
+    margin: 5px;
+    background-color: lightgray;
+    border: 2px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    position: relative;
+}
+
+.node.ambulance {
+    background-color: blue;
+    color: white;
+}
+
+.node.patient {
+    background-color: red;
+    color: white;
+}
+
+.node.path {
+    background-color: yellow;
+}

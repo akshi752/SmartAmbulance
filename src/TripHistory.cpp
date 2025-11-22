@@ -34,4 +34,3 @@ void TripHistory::displayHistory() {
         temp = temp->next;
     }
 }
-

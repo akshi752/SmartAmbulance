@@ -1,22 +1,24 @@
-#ifndef AMBULANCE_H
-#define AMBULANCE_H
+#ifndef TRIPHISTORY_H
+#define TRIPHISTORY_H
 
-#include <string>
 #include <iostream>
+#include <vector>
+#include <string>
 using namespace std;
 
-class Patient; // Forward declaration
-
-class Ambulance {
-public:
+struct TripNode {
+    string patientID;
     string ambulanceID;
-    string location;
-    bool available;
+    vector<string> route;
+    TripNode* next;
+};
 
-    Ambulance(string id, string loc);
-
-    void assignToPatient(Patient &p);
-    void updateLocation(const string &newLoc);
+class TripHistory {
+    TripNode* head;
+public:
+    TripHistory();
+    void addTrip(string patientID, string ambulanceID, vector<string> route);
+    void displayHistory();
 };
 
 #endif

@@ -17,6 +17,8 @@ public:
 
     void assignToPatient(Patient &p);
     void updateLocation(const string &newLoc);
+    string getambulanceId();
+    string getlocation();
 };
 
 #endif

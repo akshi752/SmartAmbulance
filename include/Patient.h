@@ -14,6 +14,8 @@ public:
     Patient(string id, string loc, string urg);
 
     void requestAmbulance();
+    string getpatientId();
+    string getlocation();
 };
 
 #endif

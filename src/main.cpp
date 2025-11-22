@@ -1,3 +1,4 @@
+
 #include "../include/CityMap.h"
 #include "../include/RouteFinder.h"
 #include "../include/Ambulance.h"
@@ -7,7 +8,7 @@
 using namespace std;
 
 int main() {
-
+    // --- 1. Create City Map ---
     CityMap city;
     city.addCity("A");
     city.addCity("B");
@@ -23,10 +24,11 @@ int main() {
     city.displayMap();
     cout << "-------------------------" << endl;
 
+    // --- 2. Create Ambulances ---
     Ambulance amb1("AMB1", "A");
     Ambulance amb2("AMB2", "B");
 
- 
+    // --- 3. Create Patients ---
     Patient pat1("P1", "C", "High");
     Patient pat2("P2", "D", "Medium");
 
@@ -34,11 +36,16 @@ int main() {
     pat2.requestAmbulance();
     cout << "-------------------------" << endl;
 
-   
+    // --- 4. RouteFinder ---
     RouteFinder rf(city);
 
-    auto [dist1, path1] = rf.dijkstra(amb1.location, pat1.location);
-    auto [dist2, path2] = rf.dijkstra(amb2.location, pat2.location);
+    std::pair<int, std::vector<std::string>> result1 = rf.dijkstra(amb1.location, pat1.location);
+int dist1 = result1.first;
+std::vector<std::string> path1 = result1.second;
+
+std::pair<int, std::vector<std::string>> result2 = rf.dijkstra(amb2.location, pat2.location);
+int dist2 = result2.first;
+std::vector<std::string> path2 = result2.second;
 
     cout << "Route for AMB1 to P1: ";
     for(auto &loc : path1) cout << loc << " ";
@@ -49,7 +56,7 @@ int main() {
     cout << "| Distance: " << dist2 << endl;
     cout << "-------------------------" << endl;
 
-  
+    // --- 5. Assign Ambulances ---
     amb1.assignToPatient(pat1);
     amb2.assignToPatient(pat2);
 
@@ -57,7 +64,7 @@ int main() {
     amb2.updateLocation(pat2.location);
     cout << "-------------------------" << endl;
 
-  
+    // --- 6. Trip History ---
     TripHistory history;
     history.addTrip(pat1.patientID, amb1.ambulanceID, path1);
     history.addTrip(pat2.patientID, amb2.ambulanceID, path2);
@@ -66,3 +73,5 @@ int main() {
 
     return 0;
 }
+
+

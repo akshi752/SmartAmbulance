@@ -11,3 +11,9 @@ void Patient::requestAmbulance() {
          << " requested an ambulance at location " << location
          << " with urgency: " << urgency << endl;
 }
+string Patient:: getpatientId(){
+    return patientID;
+}
+string Patient::getlocation(){
+    return location;
+}
